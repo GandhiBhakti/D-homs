@@ -19,7 +19,7 @@ function IPDForm({ onIPDAdmissionSaved }) {
   const [patientType, setPatientType] = useState("new");
   const [doctorPatients, setDoctorPatients] = useState([]);
   const [selectedPatient, setSelectedPatient] = useState(null);
-  const [showPatientList, setShowPatientList] = useState(false);
+  const [, setShowPatientList] = useState(false);
   const [patientSearchQuery, setPatientSearchQuery] = useState("");
   const [showABHAVerification, setShowABHAVerification] = useState(false);
   const [showPMJAYVerification, setShowPMJAYVerification] = useState(false);

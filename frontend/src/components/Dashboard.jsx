@@ -18,7 +18,6 @@ function Dashboard({ onNavigate, refreshKey }) {
     refund: 0,
     bedOccupancy: { total: 18, capacity: 50, icu: 1, icuCapacity: 5 }
   });
-  const [searchQuery, setSearchQuery] = useState("");
   const [fromDate, setFromDate] = useState(new Date().toISOString().split('T')[0]);
   const [toDate, setToDate] = useState(new Date().toISOString().split('T')[0]);
   const [loading, setLoading] = useState(true);
@@ -53,43 +52,6 @@ function Dashboard({ onNavigate, refreshKey }) {
     }
   };
 
-  const handleDateFilter = (filter) => {
-    const today = new Date();
-    let from = new Date();
-    let to = new Date();
-
-    switch (filter) {
-      case 'today':
-        from = today;
-        to = today;
-        break;
-      case 'yesterday':
-        from = new Date(today);
-        from.setDate(today.getDate() - 1);
-        to = from;
-        break;
-      case 'thisWeek':
-        from = new Date(today);
-        from.setDate(today.getDate() - today.getDay());
-        to = today;
-        break;
-      case 'thisMonth':
-        from = new Date(today.getFullYear(), today.getMonth(), 1);
-        to = today;
-        break;
-      case 'last30Days':
-        from = new Date(today);
-        from.setDate(today.getDate() - 30);
-        to = today;
-        break;
-      default:
-        break;
-    }
-
-    setFromDate(from.toISOString().split('T')[0]);
-    setToDate(to.toISOString().split('T')[0]);
-  };
-
   const handleLogout = () => {
     logout();
     localStorage.removeItem("refreshToken");
@@ -97,20 +59,8 @@ function Dashboard({ onNavigate, refreshKey }) {
     navigate("/login");
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/opd/list?search=${encodeURIComponent(searchQuery)}`);
-    }
-  };
-
   if (loading) {
     return <div className="dashboard-loading">Loading dashboard...</div>;
-  }
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' });
   };
 
   const getTodayDate = () => {
