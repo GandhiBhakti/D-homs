@@ -18,8 +18,8 @@ function Dashboard({ onNavigate, refreshKey }) {
     refund: 0,
     bedOccupancy: { total: 18, capacity: 50, icu: 1, icuCapacity: 5 }
   });
-  const [fromDate, setFromDate] = useState(new Date().toISOString().split('T')[0]);
-  const [toDate, setToDate] = useState(new Date().toISOString().split('T')[0]);
+  const [fromDate] = useState(new Date().toISOString().split('T')[0]);
+  const [toDate] = useState(new Date().toISOString().split('T')[0]);
   const [loading, setLoading] = useState(true);
   const [chartType, setChartType] = useState('line');
 
