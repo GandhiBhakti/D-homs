@@ -27,6 +27,7 @@ function BillDetails() {
     } else {
       fetchPrescriptions();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab, doctorFilter, dateFrom, dateTo, consultationType]);
 
   const fetchBills = async () => {
