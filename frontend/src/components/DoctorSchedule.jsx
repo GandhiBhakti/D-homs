@@ -7,7 +7,7 @@ import PageHeader from "./PageHeader";
 
 const DoctorSchedule = () => {
   const navigate = useNavigate();
-  const { user, isDoctor, isAdmin, isStaff, logout } = useAuth();
+  const { user, isDoctor, logout } = useAuth();
   const [schedules, setSchedules] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [currentDoctorId, setCurrentDoctorId] = useState(null);
@@ -18,6 +18,7 @@ const DoctorSchedule = () => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchData = async () => {

@@ -7,7 +7,7 @@ import { doctorService } from "../services/doctorService";
 const DoctorAvailability = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
-  const [availabilities, setAvailabilities] = useState([]);
+  const [availabilities] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
