@@ -24,10 +24,12 @@ const PrescriptionList = ({ searchQuery }) => {
     useEffect(() => {
         fetchDoctors();
         fetchPrescriptions();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         fetchPrescriptions();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filterDoctor, filterDateFrom, filterDateTo, filterType]);
 
     const fetchDoctors = async () => {

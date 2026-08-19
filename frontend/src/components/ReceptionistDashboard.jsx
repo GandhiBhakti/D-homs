@@ -6,7 +6,7 @@ import "./ReceptionistDashboard.css";
 
 const ReceptionistDashboard = () => {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
   const [kpiData, setKpiData] = useState({
     opd: 0,
     ipd: 0,
@@ -17,7 +17,6 @@ const ReceptionistDashboard = () => {
     refund: 0,
     bedOccupancy: { total: 18, capacity: 50, icu: 1, icuCapacity: 5 }
   });
-  const [searchQuery, setSearchQuery] = useState("");
   const [fromDate, setFromDate] = useState(new Date().toISOString().split('T')[0]);
   const [toDate, setToDate] = useState(new Date().toISOString().split('T')[0]);
   const [loading, setLoading] = useState(true);
@@ -93,13 +92,6 @@ const ReceptionistDashboard = () => {
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("user");
     navigate("/login");
-  };
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/opd/list?search=${encodeURIComponent(searchQuery)}`);
-    }
   };
 
   const formatDate = (dateString) => {

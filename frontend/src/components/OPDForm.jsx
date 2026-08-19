@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { departmentService } from "../services/departmentService";
 import { doctorService } from "../services/doctorService";
 import { opdService } from "../services/opdService";
 import { useAuth } from "../contexts/AuthContext";
@@ -12,7 +11,6 @@ import "./OPDForm.css";
 
 function OPDForm({ onOPDVisitSaved, defaultService = "opd" }) {
   const { user, isDoctor, isStaff } = useAuth();
-  const [departments, setDepartments] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -20,12 +18,10 @@ function OPDForm({ onOPDVisitSaved, defaultService = "opd" }) {
   const [toast, setToast] = useState(null);
   const [showSavedModal, setShowSavedModal] = useState(false);
   const [savedPatient, setSavedPatient] = useState(null);
-  const [activeService, setActiveService] = useState(defaultService);
   const [selectedDoctorId, setSelectedDoctorId] = useState("");
   const [patientType, setPatientType] = useState("new");
   const [doctorPatients, setDoctorPatients] = useState([]);
   const [selectedPatient, setSelectedPatient] = useState(null);
-  const [showPatientList, setShowPatientList] = useState(false);
   const [patientSearchQuery, setPatientSearchQuery] = useState("");
   const [showABHAVerification, setShowABHAVerification] = useState(false);
   const [showPMJAYVerification, setShowPMJAYVerification] = useState(false);
@@ -65,11 +61,7 @@ function OPDForm({ onOPDVisitSaved, defaultService = "opd" }) {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [deptData, doctorData] = await Promise.all([
-          departmentService.getAllDepartments(),
-          doctorService.getAllDoctors(),
-        ]);
-        setDepartments(deptData);
+        const doctorData = await doctorService.getAllDoctors();
         setDoctors(doctorData);
 
         // If user is a doctor, auto-select their doctor ID
@@ -91,7 +83,6 @@ function OPDForm({ onOPDVisitSaved, defaultService = "opd" }) {
               if (response.ok) {
                 const patients = await response.json();
                 setDoctorPatients(patients);
-                setShowPatientList(true);
               }
             } catch (err) {
               console.error("Error fetching doctor's patients:", err);
@@ -114,7 +105,6 @@ function OPDForm({ onOPDVisitSaved, defaultService = "opd" }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const isIPD = activeService === "ipd";
   const selectedDoctor = doctors.find(
     (doctor) => String(doctor.id) === String(selectedDoctorId),
   );
@@ -139,12 +129,10 @@ function OPDForm({ onOPDVisitSaved, defaultService = "opd" }) {
       if (response.ok) {
         const patients = await response.json();
         setDoctorPatients(patients);
-        setShowPatientList(true);
       }
     } catch (err) {
       console.error("Error fetching doctor's patients:", err);
       setDoctorPatients([]);
-      setShowPatientList(true);
     }
   };
 
@@ -244,7 +232,6 @@ function OPDForm({ onOPDVisitSaved, defaultService = "opd" }) {
       setPatientType("new");
       setSelectedPatient(null);
       setDoctorPatients([]);
-      setShowPatientList(false);
       onOPDVisitSaved?.();
     } catch (err) {
       setError(err.message);
