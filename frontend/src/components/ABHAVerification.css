@@ -1,0 +1,158 @@
+.abha-verification {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.abha-header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.abha-header h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.abha-header p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.abha-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.abha-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.abha-form .form-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.abha-form .form-group input,
+.abha-form .form-group select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.abha-form .form-group input:focus,
+.abha-form .form-group select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.abha-form .form-group input::placeholder {
+  color: #999;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.abha-success,
+.abha-linked {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.success-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.abha-success h4,
+.abha-linked h4 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.abha-success p,
+.abha-linked p {
+  margin: 0 0 20px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.abha-details {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  text-align: left;
+}
+
+.abha-details p {
+  margin: 8px 0;
+  color: #333;
+  font-size: 14px;
+}
+
+.abha-details strong {
+  color: #667eea;
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  border: 1px solid #fcc;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #e0e0e0;
+}
