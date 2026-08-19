@@ -91,7 +91,7 @@ function OPDForm({ onOPDVisitSaved, defaultService = "opd" }) {
         }
         // Staff can select any doctor, no auto-selection needed
       } catch (err) {
-        setError("Unable to load departments or doctors");
+        setError("Unable to load doctors");
       } finally {
         setLoading(false);
       }
